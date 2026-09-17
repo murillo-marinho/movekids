@@ -1,0 +1,3530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MoveKids — ação extensionista voltada ao desenvolvimento atlético infantil e ao combate aos vícios da era digital." />
+  <title>MoveKids | Infância em Movimento</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#071653;
+      --blue:#071653;
+      --cyan:#ff4b26;
+      --orange:#ff4b26;
+      --yellow:#ff7048;
+      --green:#ff4b26;
+      --rose:#ff7048;
+      --cream:#fff7f3;
+      --white:#ffffff;
+      --text:#18213d;
+      --muted:#66708a;
+      --soft:#f7f8fc;
+      --border:#e2e5ee;
+      --shadow:0 24px 70px rgba(15, 23, 42, .12);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter', sans-serif;
+      color:var(--text);
+      background:#fff;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+    button,input,textarea{font:inherit}
+
+    .container{
+      width:min(1180px, calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 14px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:.82rem;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      background:rgba(37,99,235,.09);
+      color:var(--blue);
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.86);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(226,232,240,.8);
+    }
+
+    .nav{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-family:'Montserrat', sans-serif;
+      font-size:1.5rem;
+      font-weight:700;
+      color:var(--navy);
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      color:white;
+      font-size:1.35rem;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      box-shadow:0 10px 24px rgba(37,99,235,.28);
+      transform:rotate(-4deg);
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:25px;
+      padding:0;
+      margin:0;
+      font-weight:700;
+      color:#475569;
+      font-size:.95rem;
+    }
+
+    nav a:hover{color:var(--blue)}
+
+    .nav-cta, .btn-primary, .btn-secondary{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:9px;
+      border-radius:14px;
+      font-weight:800;
+      transition:.22s ease;
+      cursor:pointer;
+      border:none;
+    }
+
+    .nav-cta{
+      padding:12px 18px;
+      color:white;
+      background:var(--navy);
+    }
+
+    .nav-cta:hover,.btn-primary:hover{transform:translateY(-2px)}
+
+    .hero{
+      position:relative;
+      min-height:720px;
+      display:flex;
+      align-items:center;
+      padding:82px 0 70px;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(250,204,21,.23), transparent 25%),
+        radial-gradient(circle at 85% 10%, rgba(6,182,212,.19), transparent 28%),
+        linear-gradient(180deg,#f8fbff 0%,#ffffff 100%);
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:90px;
+      background:linear-gradient(to bottom,transparent,#fff);
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      align-items:center;
+      gap:60px;
+    }
+
+    .hero h1{
+      font-family:'Montserrat',sans-serif;
+      color:var(--navy);
+      font-size:clamp(3.2rem,6vw,6.25rem);
+      line-height:.91;
+      margin:22px 0 25px;
+      letter-spacing:-.045em;
+      max-width:760px;
+    }
+
+    .hero h1 .accent{color:var(--orange)}
+    .hero p{
+      max-width:680px;
+      font-size:1.12rem;
+      line-height:1.75;
+      color:#475569;
+      margin:0 0 30px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:13px;
+      margin-bottom:31px;
+    }
+
+    .btn-primary{
+      padding:15px 22px;
+      color:white;
+      background:linear-gradient(135deg,var(--orange),#ea580c);
+      box-shadow:0 14px 32px rgba(249,115,22,.28);
+    }
+
+    .btn-secondary{
+      padding:15px 22px;
+      color:var(--navy);
+      background:white;
+      border:1px solid var(--border);
+      box-shadow:0 10px 25px rgba(15,23,42,.05);
+    }
+
+    .hero-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:11px;
+    }
+
+    .meta-chip{
+      padding:9px 12px;
+      border-radius:10px;
+      color:#475569;
+      background:white;
+      border:1px solid var(--border);
+      font-weight:700;
+      font-size:.9rem;
+    }
+
+    .visual{
+      position:relative;
+      min-height:520px;
+      display:grid;
+      place-items:center;
+    }
+
+    .sport-card{
+      width:min(430px,100%);
+      aspect-ratio: .84;
+      border-radius:38px;
+      background:linear-gradient(145deg,#172554,#1d4ed8);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      transform:rotate(2deg);
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:35px;
+      color:white;
+    }
+
+    .sport-card:before{
+      content:"";
+      position:absolute;
+      width:260px;height:260px;
+      border-radius:50%;
+      background:var(--yellow);
+      top:-88px;right:-83px;
+      opacity:.95;
+    }
+
+    .sport-card:after{
+      content:"";
+      position:absolute;
+      width:230px;height:230px;
+      border-radius:50%;
+      border:42px solid rgba(255,255,255,.10);
+      left:-80px;bottom:40px;
+    }
+
+    .kid-figure{
+      position:absolute;
+      z-index:2;
+      left:50%;
+      top:47%;
+      transform:translate(-50%,-50%);
+      font-size:9rem;
+      filter:drop-shadow(0 18px 14px rgba(0,0,0,.16));
+    }
+
+    .sport-card h3{
+      position:relative;
+      z-index:3;
+      font-family:'Montserrat',sans-serif;
+      font-size:2.2rem;
+      line-height:1;
+      margin:0 0 10px;
+    }
+    .sport-card p{
+      position:relative;
+      z-index:3;
+      color:rgba(255,255,255,.82);
+      margin:0;
+      line-height:1.5;
+    }
+
+    .floating{
+      position:absolute;
+      padding:14px 17px;
+      background:white;
+      border-radius:16px;
+      box-shadow:0 16px 45px rgba(15,23,42,.13);
+      font-weight:800;
+      color:var(--navy);
+      z-index:4;
+    }
+    .floating.one{left:0; top:85px; transform:rotate(-6deg)}
+    .floating.two{right:0; bottom:65px; transform:rotate(5deg)}
+    .floating span{font-size:1.25rem;margin-right:7px}
+
+    section{padding:95px 0}
+
+    .section-head{
+      max-width:780px;
+      margin-bottom:45px;
+    }
+
+    .section-head h2{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(2.3rem,4vw,4rem);
+      line-height:1;
+      letter-spacing:-.03em;
+      color:var(--navy);
+      margin:15px 0 16px;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      font-size:1.05rem;
+      line-height:1.75;
+      margin:0;
+    }
+
+    .problem{
+      background:var(--soft);
+    }
+
+    .problem-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .info-card{
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:28px;
+      background:white;
+      transition:.23s ease;
+    }
+
+    .info-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 18px 40px rgba(15,23,42,.08);
+    }
+
+    .icon{
+      width:54px;height:54px;
+      border-radius:17px;
+      display:grid;place-items:center;
+      font-size:1.6rem;
+      margin-bottom:22px;
+      background:#eff6ff;
+    }
+
+    .info-card h3{
+      margin:0 0 10px;
+      color:var(--navy);
+      font-size:1.18rem;
+    }
+
+    .info-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:55px;
+      align-items:center;
+    }
+
+    .big-quote{
+      padding:42px;
+      border-radius:30px;
+      color:white;
+      background:linear-gradient(145deg,var(--orange),#fb923c);
+      box-shadow:0 25px 70px rgba(249,115,22,.21);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .big-quote:after{
+      content:"✦";
+      position:absolute;
+      right:24px;
+      top:14px;
+      font-size:6rem;
+      color:rgba(255,255,255,.14);
+    }
+
+    .big-quote strong{
+      display:block;
+      font-family:'Montserrat',sans-serif;
+      font-size:2.35rem;
+      line-height:1.05;
+      margin-bottom:18px;
+      max-width:540px;
+    }
+
+    .big-quote p{margin:0;line-height:1.75;color:rgba(255,255,255,.9)}
+
+    .feature-list{
+      display:grid;
+      gap:16px;
+    }
+
+    .feature{
+      display:flex;
+      align-items:flex-start;
+      gap:15px;
+      padding:18px;
+      border-radius:17px;
+      border:1px solid var(--border);
+      background:#fff;
+    }
+
+    .feature-badge{
+      flex:0 0 auto;
+      width:38px;height:38px;
+      border-radius:12px;
+      display:grid;place-items:center;
+      background:#ecfdf5;
+      color:#15803d;
+      font-weight:900;
+    }
+
+    .feature h4{margin:2px 0 5px;color:var(--navy)}
+    .feature p{margin:0;color:var(--muted);line-height:1.5;font-size:.95rem}
+
+    .audience{
+      background:linear-gradient(180deg,#fff7ed 0%,#fff 100%);
+    }
+
+    .audience-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .audience-card{
+      min-height:320px;
+      border-radius:30px;
+      padding:35px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .audience-card.moms{
+      background:#fff;
+      border:1px solid #fed7aa;
+    }
+
+    .audience-card.business{
+      color:white;
+      background:linear-gradient(135deg,#0f172a,#172554);
+    }
+
+    .audience-card .emoji{
+      font-size:3rem;
+      margin-bottom:35px;
+      display:block;
+    }
+
+    .audience-card h3{
+      font-family:'Montserrat',sans-serif;
+      font-size:2rem;
+      margin:0 0 12px;
+    }
+
+    .audience-card p{
+      line-height:1.7;
+      max-width:520px;
+      margin:0;
+      color:#64748b;
+    }
+
+    .audience-card.business p{color:#cbd5e1}
+
+    .event{
+      background:var(--navy);
+      color:white;
+    }
+
+    .event .section-head h2{color:white}
+    .event .section-head p{color:#cbd5e1}
+    .event .pill{background:rgba(255,255,255,.10);color:#fde68a}
+
+    .event-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .event-card{
+      padding:24px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.11);
+      background:rgba(255,255,255,.06);
+    }
+
+    .event-card small{
+      color:#93c5fd;
+      text-transform:uppercase;
+      font-weight:800;
+      letter-spacing:.07em;
+    }
+
+    .event-card strong{
+      display:block;
+      margin-top:8px;
+      font-size:1.12rem;
+      line-height:1.4;
+    }
+
+    .journey-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .step{
+      padding:26px 24px;
+      border-radius:22px;
+      background:#fff;
+      border:1px solid var(--border);
+      position:relative;
+    }
+
+    .step-number{
+      font-family:'Montserrat',sans-serif;
+      font-size:3.2rem;
+      line-height:1;
+      color:#dbeafe;
+      margin-bottom:13px;
+    }
+
+    .step h3{margin:0 0 8px;color:var(--navy)}
+    .step p{margin:0;color:var(--muted);line-height:1.6;font-size:.95rem}
+
+    .cta-section{padding:90px 0 105px}
+
+    .cta{
+      border-radius:34px;
+      padding:55px;
+      background:
+        radial-gradient(circle at 85% 20%,rgba(250,204,21,.95) 0 70px, transparent 71px),
+        linear-gradient(135deg,#2563eb,#06b6d4);
+      color:white;
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:45px;
+      align-items:center;
+      box-shadow:0 28px 80px rgba(37,99,235,.23);
+    }
+
+    .cta h2{
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(2.2rem,4vw,3.7rem);
+      line-height:1;
+      margin:0 0 15px;
+    }
+
+    .cta p{
+      color:rgba(255,255,255,.9);
+      line-height:1.7;
+      margin:0;
+      max-width:700px;
+    }
+
+    .cta .btn-secondary{
+      background:white;
+      border:none;
+      padding:17px 24px;
+      width:100%;
+    }
+
+    footer{
+      padding:32px 0;
+      border-top:1px solid var(--border);
+      color:#64748b;
+      font-size:.92rem;
+    }
+
+    .footer-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .mobile-toggle{display:none}
+
+    @media(max-width:920px){
+      nav ul{display:none}
+      .hero-grid,.about-grid,.cta{grid-template-columns:1fr}
+      .hero{padding-top:55px}
+      .visual{min-height:470px}
+      .problem-grid{grid-template-columns:1fr}
+      .audience-grid{grid-template-columns:1fr}
+      .event-grid,.journey-grid{grid-template-columns:1fr 1fr}
+      .cta{padding:40px}
+    }
+
+    @media(max-width:600px){
+      .container{width:min(100% - 28px,1180px)}
+      .nav{min-height:68px}
+      .nav-cta{display:none}
+      .hero h1{font-size:3.55rem}
+      .hero p{font-size:1rem}
+      .visual{min-height:430px}
+      .sport-card{width:88%; padding:25px}
+      .kid-figure{font-size:7rem}
+      .floating{font-size:.78rem;padding:11px 13px}
+      .event-grid,.journey-grid{grid-template-columns:1fr}
+      section{padding:72px 0}
+      .cta{padding:32px 25px}
+      .cta-section{padding:65px 0}
+      .hero-actions .btn-primary,.hero-actions .btn-secondary{width:100%}
+    }
+
+
+    /* =========================================================
+       IDENTIDADE MOVEKIDS — AZUL MARINHO + LARANJA CORAL
+       ========================================================= */
+    .brand{min-width:190px}
+    .brand-logo{
+      display:block;
+      width:190px;
+      height:auto;
+      max-height:62px;
+      object-fit:contain;
+      object-position:left center;
+    }
+
+    nav a:hover{color:var(--orange)}
+
+    .pill{
+      background:#fff0eb;
+      color:var(--orange);
+      border:1px solid rgba(255,75,38,.12);
+    }
+
+    .nav-cta{
+      background:var(--orange);
+      box-shadow:0 10px 24px rgba(255,75,38,.20);
+    }
+    .nav-cta:hover{background:#eb3f1c}
+
+    .hero{
+      background:
+        radial-gradient(circle at 12% 17%, rgba(255,75,38,.12), transparent 29%),
+        radial-gradient(circle at 86% 11%, rgba(7,22,83,.10), transparent 30%),
+        linear-gradient(180deg,#fbfcff 0%,#ffffff 100%);
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#ff4b26,#ed3f1c);
+      box-shadow:0 14px 32px rgba(255,75,38,.26);
+    }
+
+    .btn-secondary:hover{
+      color:var(--orange);
+      border-color:rgba(255,75,38,.35);
+    }
+
+    .meta-chip{
+      border-color:#e5e8f0;
+      box-shadow:0 8px 24px rgba(7,22,83,.04);
+    }
+
+    .sport-card{
+      background:
+        radial-gradient(circle at 88% 12%, #ff4b26 0 21%, transparent 21.5%),
+        linear-gradient(145deg,#061344,#081b64);
+      box-shadow:0 28px 70px rgba(7,22,83,.24);
+    }
+    .sport-card:before{
+      background:#ff4b26;
+      opacity:.98;
+    }
+    .sport-card:after{
+      border-color:rgba(255,75,38,.22);
+    }
+
+    .floating{
+      border:1px solid rgba(7,22,83,.07);
+      box-shadow:0 16px 45px rgba(7,22,83,.12);
+    }
+    .floating span{color:var(--orange)}
+
+    .problem{
+      background:linear-gradient(180deg,#f8f9fd 0%,#fff 100%);
+    }
+    .info-card:hover{
+      border-color:rgba(255,75,38,.24);
+      box-shadow:0 18px 40px rgba(7,22,83,.08);
+    }
+    .icon{
+      background:#fff0eb;
+      color:var(--orange);
+    }
+
+    .big-quote{
+      background:
+        radial-gradient(circle at 90% 10%,rgba(255,255,255,.13),transparent 27%),
+        linear-gradient(145deg,#ff4b26,#ed3f1c);
+      box-shadow:0 25px 70px rgba(255,75,38,.22);
+    }
+
+    .feature-badge{
+      background:#fff0eb;
+      color:var(--orange);
+    }
+
+    .audience{
+      background:linear-gradient(180deg,#fff4ef 0%,#ffffff 100%);
+    }
+    .audience-card.moms{
+      border-color:rgba(255,75,38,.24);
+      box-shadow:0 18px 45px rgba(255,75,38,.06);
+    }
+    .audience-card.business{
+      background:
+        radial-gradient(circle at 90% 12%,rgba(255,75,38,.24),transparent 28%),
+        linear-gradient(135deg,#050f3c,#071653);
+    }
+
+    .event{
+      background:
+        radial-gradient(circle at 92% 4%,rgba(255,75,38,.19),transparent 25%),
+        linear-gradient(145deg,#050f3c,#071653);
+    }
+    .event .pill{
+      background:rgba(255,75,38,.14);
+      color:#ff9b83;
+      border-color:rgba(255,75,38,.18);
+    }
+    .event-card{
+      border-color:rgba(255,255,255,.13);
+      background:rgba(255,255,255,.055);
+    }
+    .event-card small{color:#ff9b83}
+
+    .step-number{color:#ffd8cd}
+    .step:hover{
+      border-color:rgba(255,75,38,.24);
+      box-shadow:0 15px 35px rgba(7,22,83,.06);
+    }
+
+    .cta{
+      background:
+        radial-gradient(circle at 88% 18%,rgba(7,22,83,.96) 0 72px, transparent 73px),
+        linear-gradient(135deg,#ff4b26,#f15a35);
+      box-shadow:0 28px 80px rgba(255,75,38,.22);
+    }
+    .cta .btn-secondary{
+      color:var(--navy);
+      box-shadow:0 10px 28px rgba(7,22,83,.10);
+    }
+    .cta .btn-secondary:hover{color:var(--orange)}
+
+    footer strong{color:var(--navy)}
+
+    @media(max-width:600px){
+      .brand{min-width:150px}
+      .brand-logo{width:150px;max-height:52px}
+    }
+
+    /* =========================================================
+       CATÁLOGO DE ATIVIDADES
+       ========================================================= */
+    .activities{
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,75,38,.08), transparent 25%),
+        linear-gradient(180deg,#ffffff 0%,#f8f9fd 100%);
+    }
+
+    .activities-top{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:30px;
+      margin-bottom:30px;
+    }
+
+    .activities-top .section-head{
+      margin-bottom:0;
+    }
+
+    .activities-note{
+      max-width:390px;
+      padding:16px 18px;
+      border-radius:18px;
+      background:#fff7f3;
+      border:1px solid rgba(255,75,38,.16);
+      color:#775142;
+      font-size:.88rem;
+      line-height:1.55;
+    }
+
+    .activity-toolbar{
+      display:grid;
+      grid-template-columns:minmax(240px,1.2fr) repeat(2,minmax(170px,.55fr));
+      gap:12px;
+      margin-bottom:26px;
+      padding:15px;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:22px;
+      box-shadow:0 12px 34px rgba(7,22,83,.05);
+    }
+
+    .activity-search,
+    .activity-select{
+      width:100%;
+      min-height:48px;
+      padding:0 14px;
+      border-radius:13px;
+      border:1px solid #dfe3ed;
+      outline:none;
+      background:#fbfcff;
+      color:var(--text);
+      font-weight:600;
+    }
+
+    .activity-search:focus,
+    .activity-select:focus{
+      border-color:rgba(255,75,38,.55);
+      box-shadow:0 0 0 3px rgba(255,75,38,.08);
+    }
+
+    .activity-count{
+      margin:0 0 17px;
+      color:var(--muted);
+      font-size:.92rem;
+      font-weight:700;
+    }
+
+    .activity-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .activity-card{
+      display:flex;
+      flex-direction:column;
+      min-height:440px;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:0 10px 28px rgba(7,22,83,.045);
+      transition:.22s ease;
+    }
+
+    .activity-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(255,75,38,.25);
+      box-shadow:0 22px 48px rgba(7,22,83,.09);
+    }
+
+    .activity-cover{
+      min-height:156px;
+      padding:22px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      position:relative;
+      overflow:hidden;
+      color:white;
+      background:
+        radial-gradient(circle at 85% 15%,rgba(255,255,255,.18),transparent 28%),
+        linear-gradient(135deg,#071653,#102878);
+    }
+
+    .activity-card[data-type="free"] .activity-cover{
+      background:
+        radial-gradient(circle at 85% 15%,rgba(255,255,255,.16),transparent 28%),
+        linear-gradient(135deg,#ff4b26,#ec3f1d);
+    }
+
+    .activity-cover:after{
+      content:"";
+      position:absolute;
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      right:-55px;
+      top:-60px;
+      border:28px solid rgba(255,255,255,.09);
+    }
+
+    .activity-sport-icon{
+      position:relative;
+      z-index:2;
+      font-size:3.6rem;
+      filter:drop-shadow(0 8px 10px rgba(0,0,0,.12));
+    }
+
+    .activity-cover-label{
+      position:relative;
+      z-index:2;
+      text-align:right;
+      font-weight:800;
+      font-size:.76rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      opacity:.88;
+    }
+
+    .activity-body{
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      flex:1;
+    }
+
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin-bottom:13px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+      padding:7px 9px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:.72rem;
+      line-height:1;
+    }
+
+    .badge-paid{
+      background:#eef2ff;
+      color:#071653;
+    }
+
+    .badge-free{
+      background:#fff0eb;
+      color:#d83a19;
+    }
+
+    .badge-age{
+      background:#f4f5f8;
+      color:#566078;
+    }
+
+    .activity-card h3{
+      margin:0 0 7px;
+      color:var(--navy);
+      font-size:1.18rem;
+      line-height:1.25;
+    }
+
+    .activity-category{
+      color:var(--orange);
+      font-weight:800;
+      font-size:.87rem;
+      margin-bottom:12px;
+    }
+
+    .activity-description{
+      margin:0 0 17px;
+      color:var(--muted);
+      line-height:1.58;
+      font-size:.92rem;
+    }
+
+    .activity-meta{
+      display:grid;
+      gap:9px;
+      margin-top:auto;
+      padding-top:3px;
+    }
+
+    .activity-meta div{
+      display:flex;
+      gap:9px;
+      color:#4f5b73;
+      font-size:.86rem;
+      line-height:1.45;
+    }
+
+    .activity-meta b{
+      color:var(--navy);
+      min-width:20px;
+    }
+
+    .activity-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:9px;
+      margin-top:18px;
+    }
+
+    .activity-btn{
+      min-height:43px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:800;
+      font-size:.84rem;
+      cursor:pointer;
+      transition:.2s ease;
+      border:1px solid var(--border);
+      background:white;
+      color:var(--navy);
+    }
+
+    .activity-btn:hover{
+      border-color:rgba(255,75,38,.32);
+      color:var(--orange);
+    }
+
+    .activity-btn.primary{
+      color:white;
+      border-color:var(--orange);
+      background:var(--orange);
+    }
+
+    .activity-btn.primary:hover{
+      background:#e94120;
+      color:white;
+    }
+
+    .activity-empty{
+      display:none;
+      padding:45px 25px;
+      border:1px dashed #d7dbe5;
+      border-radius:22px;
+      text-align:center;
+      color:var(--muted);
+      background:white;
+    }
+
+    .directory-cta{
+      margin-top:30px;
+      padding:28px;
+      border-radius:25px;
+      background:#071653;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:26px;
+    }
+
+    .directory-cta h3{
+      margin:0 0 6px;
+      font-family:'Montserrat',sans-serif;
+      font-size:1.35rem;
+    }
+
+    .directory-cta p{
+      margin:0;
+      color:#cbd3ed;
+      line-height:1.55;
+      font-size:.92rem;
+    }
+
+    .directory-cta a{
+      flex:0 0 auto;
+      padding:13px 18px;
+      border-radius:12px;
+      background:var(--orange);
+      font-weight:800;
+    }
+
+    /* Modal do perfil */
+    .profile-modal{
+      position:fixed;
+      inset:0;
+      z-index:200;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:rgba(4,10,35,.72);
+      backdrop-filter:blur(8px);
+    }
+
+    .profile-modal.open{display:flex}
+
+    .profile-panel{
+      width:min(940px,100%);
+      max-height:92vh;
+      overflow:auto;
+      border-radius:28px;
+      background:white;
+      box-shadow:0 30px 90px rgba(0,0,0,.28);
+    }
+
+    .profile-head{
+      padding:24px 26px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:20px;
+      background:linear-gradient(135deg,#071653,#102878);
+      color:white;
+    }
+
+    .profile-head.free{
+      background:linear-gradient(135deg,#ff4b26,#e94020);
+    }
+
+    .profile-head small{
+      display:block;
+      margin-bottom:7px;
+      opacity:.76;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    .profile-head h3{
+      margin:0;
+      font-family:'Montserrat',sans-serif;
+      font-size:1.65rem;
+    }
+
+    .profile-close{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.20);
+      background:rgba(255,255,255,.10);
+      color:white;
+      cursor:pointer;
+      font-size:1.2rem;
+    }
+
+    .profile-content{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+    }
+
+    .profile-info{
+      padding:27px;
+    }
+
+    .profile-info-grid{
+      display:grid;
+      gap:15px;
+      margin:20px 0;
+    }
+
+    .profile-info-item{
+      padding:14px 15px;
+      border-radius:15px;
+      background:#f8f9fc;
+      border:1px solid #edf0f5;
+    }
+
+    .profile-info-item small{
+      display:block;
+      color:#7a849a;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      font-size:.68rem;
+      margin-bottom:5px;
+    }
+
+    .profile-info-item strong{
+      color:var(--navy);
+      line-height:1.45;
+      font-size:.91rem;
+    }
+
+    .profile-disclaimer{
+      margin-top:16px;
+      padding:13px 14px;
+      border-radius:14px;
+      background:#fff7f3;
+      color:#7b5143;
+      line-height:1.5;
+      font-size:.79rem;
+    }
+
+    .profile-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:18px;
+    }
+
+    .profile-links a{
+      padding:11px 14px;
+      border-radius:11px;
+      font-weight:800;
+      font-size:.82rem;
+      background:var(--orange);
+      color:white;
+    }
+
+    .profile-links a.secondary{
+      background:#eef1f7;
+      color:var(--navy);
+    }
+
+    .profile-map{
+      min-height:520px;
+      background:#eef1f7;
+    }
+
+    .profile-map iframe{
+      width:100%;
+      height:100%;
+      min-height:520px;
+      border:0;
+      display:block;
+    }
+
+    @media(max-width:920px){
+      .activities-top{align-items:stretch;flex-direction:column}
+      .activities-note{max-width:none}
+      .activity-toolbar{grid-template-columns:1fr}
+      .activity-grid{grid-template-columns:1fr 1fr}
+      .profile-content{grid-template-columns:1fr}
+      .profile-map,.profile-map iframe{min-height:360px}
+    }
+
+    @media(max-width:650px){
+      .activity-grid{grid-template-columns:1fr}
+      .directory-cta{align-items:flex-start;flex-direction:column}
+      .directory-cta a{width:100%;text-align:center}
+      .profile-modal{padding:8px}
+      .profile-panel{border-radius:20px}
+      .profile-head{padding:20px}
+      .profile-info{padding:20px}
+    }
+
+    /* =========================================================
+       MOVEKIDS COMUNIDADE — ATIVIDADES VOLUNTÁRIAS
+       ========================================================= */
+    .community{
+      background:
+        radial-gradient(circle at 100% 0%, rgba(255,75,38,.08), transparent 25%),
+        linear-gradient(180deg,#f8f9fd 0%,#ffffff 100%);
+    }
+
+    .community-header{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:35px;
+      align-items:center;
+      margin-bottom:38px;
+    }
+
+    .community-intro{
+      padding:30px;
+      border-radius:26px;
+      background:linear-gradient(135deg,#071653,#102878);
+      color:white;
+      box-shadow:0 20px 55px rgba(7,22,83,.16);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .community-intro:after{
+      content:"";
+      position:absolute;
+      width:190px;
+      height:190px;
+      border-radius:50%;
+      border:34px solid rgba(255,75,38,.22);
+      right:-72px;
+      top:-75px;
+    }
+
+    .community-intro h3{
+      margin:0 0 12px;
+      font-family:'Montserrat',sans-serif;
+      font-size:1.7rem;
+      line-height:1.1;
+    }
+
+    .community-intro p{
+      margin:0;
+      color:#d7ddf2;
+      line-height:1.68;
+      max-width:610px;
+    }
+
+    .community-stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:22px;
+    }
+
+    .community-stat{
+      padding:14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .community-stat strong{
+      display:block;
+      color:white;
+      font-size:1.08rem;
+      margin-bottom:3px;
+    }
+
+    .community-stat span{
+      font-size:.78rem;
+      color:#bfc8ea;
+    }
+
+    .community-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:19px;
+    }
+
+    .community-card{
+      display:flex;
+      flex-direction:column;
+      min-height:390px;
+      border-radius:24px;
+      overflow:hidden;
+      background:white;
+      border:1px solid var(--border);
+      box-shadow:0 10px 28px rgba(7,22,83,.045);
+      transition:.22s ease;
+    }
+
+    .community-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(255,75,38,.25);
+      box-shadow:0 20px 45px rgba(7,22,83,.085);
+    }
+
+    .community-cover{
+      min-height:125px;
+      padding:20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:
+        radial-gradient(circle at 90% 10%,rgba(255,255,255,.14),transparent 25%),
+        linear-gradient(135deg,#ff4b26,#e94020);
+      color:white;
+    }
+
+    .community-card:nth-child(even) .community-cover{
+      background:
+        radial-gradient(circle at 90% 10%,rgba(255,75,38,.22),transparent 28%),
+        linear-gradient(135deg,#071653,#102878);
+    }
+
+    .community-icon{
+      font-size:3.1rem;
+      filter:drop-shadow(0 7px 9px rgba(0,0,0,.12));
+    }
+
+    .community-day{
+      text-align:right;
+      font-size:.78rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      opacity:.92;
+    }
+
+    .community-body{
+      padding:21px;
+      display:flex;
+      flex-direction:column;
+      flex:1;
+    }
+
+    .community-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin-bottom:12px;
+    }
+
+    .community-tag{
+      padding:6px 9px;
+      border-radius:999px;
+      background:#fff0eb;
+      color:#d83a19;
+      font-weight:800;
+      font-size:.7rem;
+    }
+
+    .community-tag.blue{
+      background:#eef1ff;
+      color:#071653;
+    }
+
+    .community-card h3{
+      margin:0 0 8px;
+      color:var(--navy);
+      font-size:1.12rem;
+      line-height:1.3;
+    }
+
+    .community-card p{
+      margin:0 0 15px;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:.9rem;
+    }
+
+    .community-info{
+      display:grid;
+      gap:8px;
+      margin-top:auto;
+    }
+
+    .community-info div{
+      display:flex;
+      gap:8px;
+      color:#4f5b73;
+      font-size:.84rem;
+      line-height:1.45;
+    }
+
+    .community-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin-top:17px;
+    }
+
+    .community-action{
+      min-height:42px;
+      border-radius:11px;
+      border:1px solid var(--border);
+      background:white;
+      color:var(--navy);
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .community-action.primary{
+      background:var(--orange);
+      border-color:var(--orange);
+      color:white;
+    }
+
+    .community-action:hover{
+      border-color:rgba(255,75,38,.35);
+      color:var(--orange);
+    }
+
+    .community-action.primary:hover{
+      background:#e94020;
+      color:white;
+    }
+
+    .community-create{
+      margin-top:30px;
+      padding:30px;
+      border-radius:26px;
+      background:#fff7f3;
+      border:1px solid rgba(255,75,38,.18);
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:25px;
+      align-items:center;
+    }
+
+    .community-create h3{
+      margin:0 0 7px;
+      color:var(--navy);
+      font-family:'Montserrat',sans-serif;
+      font-size:1.45rem;
+    }
+
+    .community-create p{
+      margin:0;
+      color:#6d5a52;
+      line-height:1.55;
+    }
+
+    .community-create .btn-primary{
+      justify-self:end;
+    }
+
+    /* Modal comunitário */
+    .community-modal{
+      position:fixed;
+      inset:0;
+      z-index:230;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:rgba(4,10,35,.72);
+      backdrop-filter:blur(8px);
+    }
+
+    .community-modal.open{display:flex}
+
+    .community-modal-card{
+      width:min(620px,100%);
+      border-radius:24px;
+      overflow:hidden;
+      background:white;
+      box-shadow:0 30px 90px rgba(0,0,0,.28);
+    }
+
+    .community-modal-head{
+      padding:24px;
+      background:linear-gradient(135deg,#071653,#102878);
+      color:white;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .community-modal-head h3{
+      margin:0;
+      font-family:'Montserrat',sans-serif;
+      font-size:1.45rem;
+    }
+
+    .community-modal-head p{
+      margin:6px 0 0;
+      color:#cbd3ed;
+      font-size:.88rem;
+      line-height:1.5;
+    }
+
+    .community-form{
+      padding:24px;
+      display:grid;
+      gap:13px;
+    }
+
+    .community-field{
+      display:grid;
+      gap:6px;
+    }
+
+    .community-field label{
+      font-size:.8rem;
+      color:#556078;
+      font-weight:800;
+    }
+
+    .community-field input,
+    .community-field select,
+    .community-field textarea{
+      width:100%;
+      padding:12px 13px;
+      border-radius:11px;
+      border:1px solid #dfe3ed;
+      outline:none;
+      background:#fbfcff;
+    }
+
+    .community-field textarea{
+      min-height:90px;
+      resize:vertical;
+    }
+
+    .community-field input:focus,
+    .community-field select:focus,
+    .community-field textarea:focus{
+      border-color:rgba(255,75,38,.55);
+      box-shadow:0 0 0 3px rgba(255,75,38,.08);
+    }
+
+    .community-form-note{
+      padding:11px 12px;
+      border-radius:11px;
+      background:#f6f7fb;
+      color:#70798f;
+      font-size:.76rem;
+      line-height:1.5;
+    }
+
+    .community-form-actions{
+      display:flex;
+      justify-content:flex-end;
+      gap:9px;
+      margin-top:2px;
+    }
+
+    @media(max-width:920px){
+      .community-header{grid-template-columns:1fr}
+      .community-grid{grid-template-columns:1fr 1fr}
+      .community-create{grid-template-columns:1fr}
+      .community-create .btn-primary{justify-self:stretch}
+    }
+
+    @media(max-width:650px){
+      .community-grid{grid-template-columns:1fr}
+      .community-stats{grid-template-columns:1fr}
+      .community-actions{grid-template-columns:1fr}
+      .community-modal{padding:8px}
+    }
+
+    /* Identidade MoveKids */
+    .brand{
+      min-width:230px;
+      display:flex;
+      align-items:center;
+    }
+    .brand-logo{
+      width:230px;
+      height:auto;
+      max-height:72px;
+      object-fit:contain;
+      object-position:left center;
+    }
+    @media(max-width:700px){
+      .brand{min-width:175px}
+      .brand-logo{width:175px;max-height:58px}
+    }
+    @media(max-width:420px){
+      .brand{min-width:145px}
+      .brand-logo{width:145px;max-height:50px}
+    }
+
+    /* =========================================================
+       RESPONSIVIDADE MOBILE — MOVEKIDS
+       ========================================================= */
+
+    img, svg, video, iframe{
+      max-width:100%;
+    }
+
+    button, a, input, select, textarea{
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    section[id]{
+      scroll-margin-top:92px;
+    }
+
+    .mobile-menu-btn,
+    .mobile-nav-cta{
+      display:none;
+    }
+
+    @media (max-width: 1024px){
+      .container{
+        width:min(100% - 36px, 1180px);
+      }
+
+      .nav{
+        gap:16px;
+      }
+
+      nav ul{
+        gap:16px;
+        font-size:.88rem;
+      }
+
+      .nav-cta{
+        padding:11px 14px;
+        font-size:.88rem;
+        white-space:nowrap;
+      }
+
+      .hero-grid{
+        gap:38px;
+      }
+
+      .hero h1{
+        font-size:clamp(3rem,6.2vw,5rem);
+      }
+
+      .activity-grid,
+      .community-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 920px){
+      header{
+        background:rgba(255,255,255,.96);
+      }
+
+      .nav{
+        min-height:72px;
+        position:relative;
+      }
+
+      .brand{
+        min-width:0 !important;
+        flex:0 1 auto;
+        z-index:3;
+      }
+
+      .brand-logo{
+        width:180px !important;
+        max-height:58px !important;
+      }
+
+      .nav > .nav-cta{
+        display:none;
+      }
+
+      .mobile-menu-btn{
+        display:flex;
+        width:46px;
+        height:46px;
+        padding:0;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:5px;
+        border:1px solid var(--border);
+        border-radius:13px;
+        background:white;
+        color:var(--navy);
+        cursor:pointer;
+        z-index:3;
+        box-shadow:0 7px 20px rgba(7,22,83,.06);
+      }
+
+      .mobile-menu-btn span{
+        display:block;
+        width:21px;
+        height:2.5px;
+        border-radius:999px;
+        background:var(--navy);
+        transition:transform .22s ease, opacity .22s ease;
+      }
+
+      .mobile-menu-btn.active span:nth-child(1){
+        transform:translateY(7.5px) rotate(45deg);
+      }
+      .mobile-menu-btn.active span:nth-child(2){
+        opacity:0;
+      }
+      .mobile-menu-btn.active span:nth-child(3){
+        transform:translateY(-7.5px) rotate(-45deg);
+      }
+
+      #mainNav{
+        display:block;
+        position:absolute;
+        top:calc(100% + 8px);
+        left:0;
+        right:0;
+        z-index:2;
+        padding:0;
+        opacity:0;
+        visibility:hidden;
+        transform:translateY(-8px);
+        pointer-events:none;
+        transition:.22s ease;
+      }
+
+      #mainNav.open{
+        opacity:1;
+        visibility:visible;
+        transform:translateY(0);
+        pointer-events:auto;
+      }
+
+      #mainNav ul{
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        gap:5px;
+        padding:10px;
+        margin:0;
+        border:1px solid var(--border);
+        border-radius:18px;
+        background:white;
+        box-shadow:0 20px 50px rgba(7,22,83,.15);
+      }
+
+      #mainNav li{
+        width:100%;
+      }
+
+      #mainNav a{
+        display:flex;
+        align-items:center;
+        min-height:47px;
+        padding:10px 13px;
+        border-radius:11px;
+        color:var(--navy);
+      }
+
+      #mainNav a:hover,
+      #mainNav a:active{
+        background:#fff1ec;
+        color:var(--orange);
+      }
+
+      .mobile-nav-cta{
+        display:block;
+        margin-top:4px;
+      }
+
+      .mobile-nav-cta a{
+        justify-content:center;
+        background:var(--orange) !important;
+        color:white !important;
+      }
+
+      .hero{
+        min-height:auto;
+        padding:58px 0 48px;
+      }
+
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:34px;
+      }
+
+      .hero-grid > div:first-child{
+        text-align:center;
+      }
+
+      .hero h1{
+        max-width:720px;
+        margin:18px auto 20px;
+        font-size:clamp(2.8rem,9vw,4.8rem);
+        line-height:.95;
+      }
+
+      .hero p{
+        margin-left:auto;
+        margin-right:auto;
+        font-size:1rem;
+        line-height:1.7;
+      }
+
+      .hero-actions,
+      .hero-meta{
+        justify-content:center;
+      }
+
+      .visual{
+        min-height:390px;
+      }
+
+      .sport-card{
+        width:min(390px,86vw);
+      }
+
+      .about-grid{
+        gap:28px;
+      }
+
+      .section-head{
+        margin-bottom:32px;
+      }
+
+      .activities-top{
+        gap:18px;
+      }
+
+      .activity-toolbar{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .activity-toolbar .activity-search{
+        grid-column:1 / -1;
+      }
+
+      .profile-panel{
+        width:min(760px,100%);
+      }
+
+      .profile-content{
+        grid-template-columns:1fr;
+      }
+
+      .profile-map,
+      .profile-map iframe{
+        min-height:340px;
+      }
+
+      .community-create{
+        gap:18px;
+      }
+    }
+
+    @media (max-width: 700px){
+      html{
+        font-size:16px;
+      }
+
+      body{
+        overflow-x:hidden;
+      }
+
+      .container{
+        width:min(100% - 28px, 1180px);
+      }
+
+      section{
+        padding:62px 0;
+      }
+
+      .brand-logo{
+        width:155px !important;
+        max-height:52px !important;
+      }
+
+      .hero{
+        padding-top:42px;
+      }
+
+      .hero h1{
+        font-size:clamp(2.65rem,13.5vw,4rem);
+        letter-spacing:-.055em;
+      }
+
+      .hero p{
+        font-size:.98rem;
+      }
+
+      .pill{
+        padding:8px 11px;
+        font-size:.72rem;
+      }
+
+      .hero-actions{
+        display:grid;
+        grid-template-columns:1fr;
+        width:100%;
+        gap:10px;
+      }
+
+      .hero-actions .btn-primary,
+      .hero-actions .btn-secondary{
+        width:100%;
+        min-height:50px;
+      }
+
+      .hero-meta{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:8px;
+      }
+
+      .meta-chip{
+        text-align:center;
+      }
+
+      .visual{
+        min-height:330px;
+      }
+
+      .sport-card{
+        width:min(310px,82vw);
+        border-radius:29px;
+        padding:24px;
+        transform:rotate(1deg);
+      }
+
+      .kid-figure{
+        font-size:6.3rem;
+      }
+
+      .sport-card h3{
+        font-size:1.72rem;
+      }
+
+      .floating{
+        font-size:.72rem;
+        padding:9px 11px;
+      }
+
+      .floating.one{
+        left:0;
+        top:48px;
+      }
+
+      .floating.two{
+        right:0;
+        bottom:35px;
+      }
+
+      .section-head h2{
+        font-size:clamp(2rem,10vw,3rem);
+      }
+
+      .section-head p{
+        font-size:.98rem;
+      }
+
+      .problem-grid,
+      .audience-grid,
+      .event-grid,
+      .journey-grid,
+      .activity-grid,
+      .community-grid{
+        grid-template-columns:1fr !important;
+      }
+
+      .info-card,
+      .audience-card,
+      .step{
+        padding:22px;
+      }
+
+      .big-quote{
+        padding:29px 24px;
+      }
+
+      .big-quote strong{
+        font-size:1.8rem;
+      }
+
+      .audience-card{
+        min-height:auto;
+      }
+
+      .event-card{
+        padding:20px;
+      }
+
+      .activity-toolbar{
+        grid-template-columns:1fr;
+        padding:12px;
+      }
+
+      .activity-toolbar .activity-search{
+        grid-column:auto;
+      }
+
+      .activity-search,
+      .activity-select{
+        min-height:51px;
+        font-size:16px;
+      }
+
+      .activity-card,
+      .community-card{
+        min-height:0;
+      }
+
+      .activity-cover{
+        min-height:125px;
+      }
+
+      .activity-sport-icon{
+        font-size:3rem;
+      }
+
+      .activity-body,
+      .community-body{
+        padding:19px;
+      }
+
+      .activity-actions,
+      .community-actions{
+        grid-template-columns:1fr;
+      }
+
+      .activity-btn,
+      .community-action{
+        min-height:48px;
+      }
+
+      .activities-note{
+        padding:14px;
+      }
+
+      .community-intro{
+        padding:25px 21px;
+      }
+
+      .community-stats{
+        grid-template-columns:1fr;
+      }
+
+      .community-create{
+        grid-template-columns:1fr;
+        padding:23px 20px;
+      }
+
+      .community-create .btn-primary{
+        width:100%;
+        justify-self:stretch;
+      }
+
+      .cta{
+        grid-template-columns:1fr;
+        padding:30px 22px;
+        border-radius:25px;
+        text-align:center;
+      }
+
+      .cta h2{
+        font-size:clamp(2rem,10vw,3rem);
+      }
+
+      .footer-row{
+        flex-direction:column;
+        text-align:center;
+        justify-content:center;
+      }
+
+      .profile-modal,
+      .community-modal{
+        padding:0;
+        align-items:flex-end;
+      }
+
+      .profile-panel,
+      .community-modal-card{
+        width:100%;
+        max-height:94dvh;
+        border-radius:24px 24px 0 0;
+      }
+
+      .profile-head,
+      .community-modal-head{
+        padding:20px;
+        position:sticky;
+        top:0;
+        z-index:4;
+      }
+
+      .profile-head h3,
+      .community-modal-head h3{
+        font-size:1.25rem;
+      }
+
+      .profile-info,
+      .community-form{
+        padding:18px;
+      }
+
+      .profile-links{
+        display:grid;
+        grid-template-columns:1fr;
+      }
+
+      .profile-links a{
+        text-align:center;
+        min-height:46px;
+      }
+
+      .profile-map,
+      .profile-map iframe{
+        min-height:300px;
+      }
+
+      .community-form-actions{
+        display:grid;
+        grid-template-columns:1fr;
+      }
+
+      .community-form-actions button{
+        width:100%;
+        min-height:48px;
+      }
+    }
+
+    @media (max-width: 420px){
+      .container{
+        width:min(100% - 22px, 1180px);
+      }
+
+      .nav{
+        min-height:66px;
+      }
+
+      .brand-logo{
+        width:138px !important;
+        max-height:47px !important;
+      }
+
+      .mobile-menu-btn{
+        width:42px;
+        height:42px;
+      }
+
+      .hero{
+        padding:34px 0 40px;
+      }
+
+      .hero h1{
+        font-size:clamp(2.35rem,14vw,3.2rem);
+      }
+
+      .hero p{
+        line-height:1.62;
+      }
+
+      .visual{
+        min-height:292px;
+      }
+
+      .sport-card{
+        width:250px;
+        padding:20px;
+      }
+
+      .kid-figure{
+        font-size:5.4rem;
+      }
+
+      .sport-card h3{
+        font-size:1.48rem;
+      }
+
+      .sport-card p{
+        font-size:.85rem;
+      }
+
+      .floating.one{
+        left:-2px;
+        top:42px;
+      }
+
+      .floating.two{
+        right:-2px;
+        bottom:28px;
+      }
+
+      .activity-card h3,
+      .community-card h3{
+        font-size:1.07rem;
+      }
+
+      .badges{
+        gap:6px;
+      }
+
+      .badge{
+        font-size:.68rem;
+      }
+
+      .event-card strong{
+        font-size:1rem;
+      }
+
+      .profile-map,
+      .profile-map iframe{
+        min-height:250px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,
+      *::before,
+      *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#inicio" aria-label="MoveKids - Infância em Movimento">
+      <img class="brand-logo" src="logo-movekids.png" alt="MoveKids - Infância em Movimento">
+    </a>
+
+    <nav id="mainNav" aria-label="Menu principal">
+      <ul>
+        <li><a href="#projeto">O projeto</a></li>
+        <li><a href="#publico">Para quem</a></li>
+        <li><a href="#atividades">Atividades</a></li>
+        <li><a href="#comunidade">Comunidade</a></li>
+        <li><a href="#evento">Evento</a></li>
+        <li><a href="#impacto">Impacto</a></li>
+        <li class="mobile-nav-cta"><a href="#participar">Quero participar</a></li>
+      </ul>
+    </nav>
+
+    <a class="nav-cta" href="#participar">Quero participar</a>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn"
+            type="button"
+            aria-label="Abrir menu"
+            aria-controls="mainNav"
+            aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <h1>Mais <span class="accent">movimento.</span><br>Menos tela.</h1>
+        <p>
+          O <strong>MoveKids</strong> é uma ação extensionista que conecta famílias,
+          crianças e profissionais do esporte para ampliar o acesso a atividades
+          esportivas e estimular uma infância mais ativa, saudável e social.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="#atividades">Encontrar atividades →</a>
+          <a class="btn-secondary" href="#comunidade">Ver grupos gratuitos</a>
+        </div>
+
+        <div class="hero-meta">
+          <span class="meta-chip">👦 Crianças de 8 a 14 anos</span>
+          <span class="meta-chip">👩 Famílias e mães</span>
+          <span class="meta-chip">🏃 Nicho esportivo infantil</span>
+        </div>
+      </div>
+
+      <div class="visual" aria-hidden="true">
+        <div class="floating one"><span>⚽</span> Movimento é infância</div>
+
+        <div class="sport-card">
+          <div class="kid-figure">🏃</div>
+          <h3>Mexer o corpo<br>também educa.</h3>
+          <p>Esporte, convivência, disciplina e novas experiências fora das telas.</p>
+        </div>
+
+        <div class="floating two"><span>🎯</span> 8–14 anos</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="problem" id="projeto">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill">Por que existe?</span>
+        <h2>Um desafio real para muitas famílias.</h2>
+        <p>
+          Entre rotina, trabalho, deslocamento e custo, muitas mães encontram
+          dificuldades para inserir os filhos em atividades esportivas. Ao mesmo
+          tempo, o uso excessivo de telas ocupa cada vez mais espaço no cotidiano infantil.
+        </p>
+      </div>
+
+      <div class="problem-grid">
+        <article class="info-card">
+          <div class="icon">📍</div>
+          <h3>Acesso limitado</h3>
+          <p>Falta de informação, distância, horários incompatíveis e pouca variedade de atividades próximas.</p>
+        </article>
+
+        <article class="info-card">
+          <div class="icon">📱</div>
+          <h3>Excesso de telas</h3>
+          <p>Celular, jogos e redes sociais disputam a atenção das crianças com experiências físicas e coletivas.</p>
+        </article>
+
+        <article class="info-card">
+          <div class="icon">🤝</div>
+          <h3>Falta de conexão</h3>
+          <p>Profissionais do esporte e famílias nem sempre conseguem se encontrar, mesmo quando existe interesse dos dois lados.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="impacto">
+    <div class="container about-grid">
+      <div class="big-quote">
+        <strong>O esporte pode ser a ponte entre uma infância conectada e uma infância presente.</strong>
+        <p>
+          O MoveKids propõe experiências esportivas acessíveis, aproxima empreendedores
+          das famílias e cria oportunidades para as crianças descobrirem novas modalidades.
+        </p>
+      </div>
+
+      <div>
+        <div class="section-head" style="margin-bottom:25px">
+          <span class="pill">O que queremos gerar</span>
+          <h2>Impacto que continua depois do evento.</h2>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature">
+            <div class="feature-badge">✓</div>
+            <div>
+              <h4>Descoberta de novas modalidades</h4>
+              <p>Contato prático com esportes que talvez a criança ainda não conheça.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-badge">✓</div>
+            <div>
+              <h4>Mais opções para as mães</h4>
+              <p>Informação clara sobre atividades, profissionais e oportunidades para os filhos.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-badge">✓</div>
+            <div>
+              <h4>Visibilidade para empreendedores</h4>
+              <p>Um espaço para apresentar serviços, modalidades e propostas ao público certo.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-badge">✓</div>
+            <div>
+              <h4>Hábitos mais saudáveis</h4>
+              <p>Estimular movimento, convivência, disciplina, autonomia e redução do sedentarismo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="audience" id="publico">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill">Público-alvo</span>
+        <h2>Dois públicos. Um mesmo propósito.</h2>
+        <p>
+          O MoveKids aproxima quem procura oportunidades esportivas para as crianças
+          de quem já trabalha para oferecer essas experiências.
+        </p>
+      </div>
+
+      <div class="audience-grid">
+        <article class="audience-card moms">
+          <span class="emoji">👩‍👧‍👦</span>
+          <h3>Mães e famílias</h3>
+          <p>
+            Especialmente mães de crianças entre <strong>8 e 14 anos</strong> que desejam
+            alternativas saudáveis, sociais e esportivas para ocupar o tempo das crianças
+            de forma mais ativa.
+          </p>
+        </article>
+
+        <article class="audience-card business">
+          <span class="emoji">🏆</span>
+          <h3>Empreendedores esportivos</h3>
+          <p>
+            Escolinhas, academias, professores, treinadores, projetos sociais e negócios
+            ligados ao esporte infantil que desejam ampliar visibilidade e criar conexão
+            com novas famílias.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  
+  <section class="activities" id="atividades">
+    <div class="container">
+      <div class="activities-top">
+        <div class="section-head">
+          <span class="pill">Atividades em Feira de Santana</span>
+          <h2>Encontre uma atividade para seu filho.</h2>
+          <p>
+            Escolas, academias e projetos sociais reais de Feira de Santana,
+            reunidos em um só lugar. Compare modalidades, veja opções gratuitas
+            e particulares e abra a localização diretamente no Google Maps.
+          </p>
+        </div>
+        <div class="activities-note">
+          <strong>Informações públicas • setembro/2026.</strong><br>
+          Vagas, mensalidades, horários e turmas podem mudar. O MoveKids indica as opções,
+          mas a confirmação deve ser feita diretamente com cada instituição.
+        </div>
+      </div>
+
+      <div class="activity-toolbar">
+        <input class="activity-search" id="activitySearch" type="search"
+               placeholder="🔎 Buscar escola, projeto, bairro ou modalidade..." aria-label="Buscar atividades">
+        <select class="activity-select" id="sportFilter" aria-label="Filtrar por modalidade">
+          <option value="all">Todas as modalidades</option>
+          <option value="karate">Karatê</option>
+          <option value="futebol">Futebol</option>
+          <option value="ballet">Ballet e dança</option>
+          <option value="natacao">Natação</option>
+          <option value="jiujitsu">Jiu-Jitsu</option>
+          <option value="multiesportes">Multiesportes</option>
+        </select>
+        <select class="activity-select" id="typeFilter" aria-label="Filtrar por tipo">
+          <option value="all">Gratuitas + particulares</option>
+          <option value="free">Somente gratuitas</option>
+          <option value="paid">Somente particulares</option>
+        </select>
+      </div>
+
+      <p class="activity-count" id="activityCount">12 atividades encontradas em Feira de Santana</p>
+
+      <div class="activity-grid" id="activityGrid">
+        
+        <article class="activity-card" data-name="Academia Karatê Pequeno Mestre" data-sport="karate" data-type="paid" data-title="Academia Karatê Pequeno Mestre" data-category="Karatê" data-age="Infantil e juvenil" data-address="R. Pfa. Bertolina Carneiro, 953 - Campo Limpo, Feira de Santana - BA, 44032-219" data-phone="(75) 98273-6656" data-phone-raw="5575982736656" data-availability="Particular • consulte turmas, aula experimental e mensalidade" data-description="Escola esportiva especializada em karatê, localizada no Campo Limpo, com atuação voltada também ao público infantil." data-source="https://www.google.com/maps/search/?api=1&query=Academia%20Karat%C3%AA%20Pequeno%20Mestre%20Feira%20de%20Santana%20BA">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">🥋</div>
+            <div class="activity-cover-label">Karatê</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-paid">● Particular</span>
+              <span class="badge badge-age">👦 Infantil e juvenil</span>
+            </div>
+            <h3>Academia Karatê Pequeno Mestre</h3>
+            <div class="activity-category">Karatê</div>
+            <p class="activity-description">Escola esportiva especializada em karatê, localizada no Campo Limpo, com atuação voltada também ao público infantil.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>R. Pfa. Bertolina Carneiro, 953 - Campo Limpo, Feira de Santana - BA, 44032-219</span></div>
+              <div><b>☎</b><span>(75) 98273-6656</span></div>
+              <div><b>✓</b><span>Particular • consulte turmas, aula experimental e mensalidade</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=R.%20Pfa.%20Bertolina%20Carneiro%2C%20953%20-%20Campo%20Limpo%2C%20Feira%20de%20Santana%20-%20BA%2C%2044032-219">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card" data-name="Ballet Brendda Macêdo" data-sport="ballet" data-type="paid" data-title="Ballet Brendda Macêdo" data-category="Ballet" data-age="Infantil e juvenil" data-address="R. Primavera, 516 - Campo Limpo, Feira de Santana - BA, 44032-042" data-phone="(75) 99847-8353" data-phone-raw="5575998478353" data-availability="Particular • consulte faixa etária, horários e valores" data-description="Escola de dança em Feira de Santana com ambiente voltado à formação e prática do ballet." data-source="https://www.google.com/maps/search/?api=1&query=Ballet%20Brendda%20Macedo%20Feira%20de%20Santana%20BA">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">🩰</div>
+            <div class="activity-cover-label">Ballet</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-paid">● Particular</span>
+              <span class="badge badge-age">👦 Infantil e juvenil</span>
+            </div>
+            <h3>Ballet Brendda Macêdo</h3>
+            <div class="activity-category">Ballet</div>
+            <p class="activity-description">Escola de dança em Feira de Santana com ambiente voltado à formação e prática do ballet.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>R. Primavera, 516 - Campo Limpo, Feira de Santana - BA, 44032-042</span></div>
+              <div><b>☎</b><span>(75) 99847-8353</span></div>
+              <div><b>✓</b><span>Particular • consulte faixa etária, horários e valores</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=R.%20Primavera%2C%20516%20-%20Campo%20Limpo%2C%20Feira%20de%20Santana%20-%20BA%2C%2044032-042">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card" data-name="Ebateca Feira de Santana" data-sport="ballet" data-type="paid" data-title="Ebateca Feira de Santana" data-category="Ballet e Dança" data-age="Todas as idades" data-address="Av. Eduardo Fróes da Mota, 1380 - Feira de Santana - BA" data-phone="(75) 3484-2448" data-phone-raw="557534842448" data-availability="Particular • pré-matrícula disponível; consulte turmas e valores" data-description="Unidade da Ebateca com ballet clássico, jazz dance, sapateado, dança de salão e ginástica rítmica, dentro da metodologia Learning by Dancing." data-source="https://ebateca.com.br/unidade/unidade-feiradesantana/">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">🩰</div>
+            <div class="activity-cover-label">Ballet e Dança</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-paid">● Particular</span>
+              <span class="badge badge-age">👦 Todas as idades</span>
+            </div>
+            <h3>Ebateca Feira de Santana</h3>
+            <div class="activity-category">Ballet e Dança</div>
+            <p class="activity-description">Unidade da Ebateca com ballet clássico, jazz dance, sapateado, dança de salão e ginástica rítmica, dentro da metodologia Learning by Dancing.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>Av. Eduardo Fróes da Mota, 1380 - Feira de Santana - BA</span></div>
+              <div><b>☎</b><span>(75) 3484-2448</span></div>
+              <div><b>✓</b><span>Particular • pré-matrícula disponível; consulte turmas e valores</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Av.%20Eduardo%20Fr%C3%B3es%20da%20Mota%2C%201380%20-%20Feira%20de%20Santana%20-%20BA">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card" data-name="Escolinha de Futebol Unidos Para o Futuro" data-sport="futebol" data-type="paid" data-title="Escolinha de Futebol Unidos Para o Futuro" data-category="Futebol" data-age="Infantil e juvenil" data-address="R. Conceição da Barra, 28-98 - Tomba, Feira de Santana - BA, 44091-340" data-phone="(75) 98257-9235" data-phone-raw="5575982579235" data-availability="Particular • consulte faixa etária, horários e mensalidade" data-description="Escolinha de futebol localizada no bairro Tomba, com treinos durante a semana e aos sábados." data-source="https://www.google.com/maps/search/?api=1&query=Escolinha%20de%20futebol%20Unidos%20Para%20o%20Futuro%20Feira%20de%20Santana%20BA">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">⚽</div>
+            <div class="activity-cover-label">Futebol</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-paid">● Particular</span>
+              <span class="badge badge-age">👦 Infantil e juvenil</span>
+            </div>
+            <h3>Escolinha de Futebol Unidos Para o Futuro</h3>
+            <div class="activity-category">Futebol</div>
+            <p class="activity-description">Escolinha de futebol localizada no bairro Tomba, com treinos durante a semana e aos sábados.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>R. Conceição da Barra, 28-98 - Tomba, Feira de Santana - BA, 44091-340</span></div>
+              <div><b>☎</b><span>(75) 98257-9235</span></div>
+              <div><b>✓</b><span>Particular • consulte faixa etária, horários e mensalidade</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=R.%20Concei%C3%A7%C3%A3o%20da%20Barra%2C%2028-98%20-%20Tomba%2C%20Feira%20de%20Santana%20-%20BA%2C%2044091-340">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card" data-name="Esporte Kids FSA" data-sport="futebol" data-type="paid" data-title="Esporte Kids FSA" data-category="Futebol" data-age="Infantil" data-address="Rua G, Conj. Morada das Árvores, 220 - Campo Limpo, Feira de Santana - BA, 44034-184" data-phone="(75) 99251-0921" data-phone-raw="5575992510921" data-availability="Particular • consulte turmas, horários e valores" data-description="Escolinha de futebol localizada no Campo Limpo, voltada à prática esportiva infantil." data-source="https://www.google.com/maps/search/?api=1&query=Esporte%20Kids%20FSA%20Feira%20de%20Santana%20BA">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">⚽</div>
+            <div class="activity-cover-label">Futebol</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-paid">● Particular</span>
+              <span class="badge badge-age">👦 Infantil</span>
+            </div>
+            <h3>Esporte Kids FSA</h3>
+            <div class="activity-category">Futebol</div>
+            <p class="activity-description">Escolinha de futebol localizada no Campo Limpo, voltada à prática esportiva infantil.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>Rua G, Conj. Morada das Árvores, 220 - Campo Limpo, Feira de Santana - BA, 44034-184</span></div>
+              <div><b>☎</b><span>(75) 99251-0921</span></div>
+              <div><b>✓</b><span>Particular • consulte turmas, horários e valores</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rua%20G%2C%20Conj.%20Morada%20das%20%C3%81rvores%2C%20220%20-%20Campo%20Limpo%2C%20Feira%20de%20Santana%20-%20BA%2C%2044034-184">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card" data-name="Acqua Center" data-sport="natacao" data-type="paid" data-title="Acqua Center" data-category="Natação" data-age="Kids e outras faixas" data-address="Rua Érico Veríssimo, Av. José Falcão da Silva, 170 - Feira de Santana - BA, 44020-242" data-phone="(75) 99180-3997" data-phone-raw="5575991803997" data-availability="Particular • consulte turma kids, avaliação e valores" data-description="Centro com natação e atividades de saúde em Feira de Santana. O próprio site destaca atendimento kids e piscina climatizada." data-source="https://acquacenteracademia.com.br/">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">🏊</div>
+            <div class="activity-cover-label">Natação</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-paid">● Particular</span>
+              <span class="badge badge-age">👦 Kids e outras faixas</span>
+            </div>
+            <h3>Acqua Center</h3>
+            <div class="activity-category">Natação</div>
+            <p class="activity-description">Centro com natação e atividades de saúde em Feira de Santana. O próprio site destaca atendimento kids e piscina climatizada.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>Rua Érico Veríssimo, Av. José Falcão da Silva, 170 - Feira de Santana - BA, 44020-242</span></div>
+              <div><b>☎</b><span>(75) 99180-3997</span></div>
+              <div><b>✓</b><span>Particular • consulte turma kids, avaliação e valores</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rua%20%C3%89rico%20Ver%C3%ADssimo%2C%20Av.%20Jos%C3%A9%20Falc%C3%A3o%20da%20Silva%2C%20170%20-%20Feira%20de%20Santana%20-%20BA%2C%2044020-242">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card" data-name="Aquática Centro de Treinamento e Reabilitação" data-sport="natacao" data-type="paid" data-title="Aquática Centro de Treinamento e Reabilitação" data-category="Natação" data-age="Consulte turma infantil" data-address="Rua Alto do Paraíba, 510 - SIM, Feira de Santana - BA, 44085-202" data-phone="(75) 3625-5739" data-phone-raw="557536255739" data-availability="Particular • confirme turma infantil, horários e valores" data-description="Escola de natação localizada no bairro SIM, com estrutura dedicada a atividades aquáticas e treinamento." data-source="https://www.google.com/maps/search/?api=1&query=Aqu%C3%A1tica%20Centro%20de%20Treinamento%20e%20Reabilita%C3%A7%C3%A3o%20Feira%20de%20Santana%20BA">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">🏊</div>
+            <div class="activity-cover-label">Natação</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-paid">● Particular</span>
+              <span class="badge badge-age">👦 Consulte turma infantil</span>
+            </div>
+            <h3>Aquática Centro de Treinamento e Reabilitação</h3>
+            <div class="activity-category">Natação</div>
+            <p class="activity-description">Escola de natação localizada no bairro SIM, com estrutura dedicada a atividades aquáticas e treinamento.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>Rua Alto do Paraíba, 510 - SIM, Feira de Santana - BA, 44085-202</span></div>
+              <div><b>☎</b><span>(75) 3625-5739</span></div>
+              <div><b>✓</b><span>Particular • confirme turma infantil, horários e valores</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rua%20Alto%20do%20Para%C3%ADba%2C%20510%20-%20SIM%2C%20Feira%20de%20Santana%20-%20BA%2C%2044085-202">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card" data-name="CT Armageddon Jiu Jitsu" data-sport="jiujitsu" data-type="paid" data-title="CT Armageddon Jiu Jitsu" data-category="Jiu-Jitsu" data-age="Infantil e juvenil" data-address="R. Aeroporto, 2387 - Campo Limpo, Feira de Santana - BA, 44033-135" data-phone="(75) 99951-0999" data-phone-raw="5575999510999" data-availability="Particular • consulte turma kids, aula experimental e valores" data-description="Centro de treinamento de jiu-jitsu em Feira de Santana. Também participa de iniciativa social com crianças do bairro Rua Nova." data-source="https://www.google.com/maps/search/?api=1&query=CT%20Armageddon%20Jiu%20Jitsu%20Feira%20de%20Santana%20BA">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">🥋</div>
+            <div class="activity-cover-label">Jiu-Jitsu</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-paid">● Particular</span>
+              <span class="badge badge-age">👦 Infantil e juvenil</span>
+            </div>
+            <h3>CT Armageddon Jiu Jitsu</h3>
+            <div class="activity-category">Jiu-Jitsu</div>
+            <p class="activity-description">Centro de treinamento de jiu-jitsu em Feira de Santana. Também participa de iniciativa social com crianças do bairro Rua Nova.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>R. Aeroporto, 2387 - Campo Limpo, Feira de Santana - BA, 44033-135</span></div>
+              <div><b>☎</b><span>(75) 99951-0999</span></div>
+              <div><b>✓</b><span>Particular • consulte turma kids, aula experimental e valores</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=R.%20Aeroporto%2C%202387%20-%20Campo%20Limpo%2C%20Feira%20de%20Santana%20-%20BA%2C%2044033-135">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card" data-name="Gracie Barra Artêmia Pires" data-sport="jiujitsu" data-type="paid" data-title="Gracie Barra Artêmia Pires" data-category="Jiu-Jitsu" data-age="Consulte turma infantil" data-address="R. Indaial, 05 / 183 - SIM, Feira de Santana - BA, 44086-360" data-phone="(75) 3303-0727" data-phone-raw="557533030727" data-availability="Particular • consulte programa infantil, horários e valores" data-description="Escola de jiu-jitsu situada no bairro SIM, integrante da rede Gracie Barra." data-source="https://www.google.com/maps/search/?api=1&query=Gracie%20Barra%20Artemia%20Pires%20Feira%20de%20Santana%20BA">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">🥋</div>
+            <div class="activity-cover-label">Jiu-Jitsu</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-paid">● Particular</span>
+              <span class="badge badge-age">👦 Consulte turma infantil</span>
+            </div>
+            <h3>Gracie Barra Artêmia Pires</h3>
+            <div class="activity-category">Jiu-Jitsu</div>
+            <p class="activity-description">Escola de jiu-jitsu situada no bairro SIM, integrante da rede Gracie Barra.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>R. Indaial, 05 / 183 - SIM, Feira de Santana - BA, 44086-360</span></div>
+              <div><b>☎</b><span>(75) 3303-0727</span></div>
+              <div><b>✓</b><span>Particular • consulte programa infantil, horários e valores</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=R.%20Indaial%2C%2005%20/%20183%20-%20SIM%2C%20Feira%20de%20Santana%20-%20BA%2C%2044086-360">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card" data-name="Projeto Social One Two" data-sport="futebol" data-type="free" data-title="Projeto Social One Two" data-category="Futebol" data-age="Crianças e adolescentes" data-address="CRAS Jardim Acácia - Jardim Acácia, Feira de Santana - BA" data-phone="SECEL: (75) 3623-7634" data-phone-raw="557536237634" data-availability="Gratuito • confirme inscrições, vagas e dias das atividades" data-description="Projeto social de inclusão por meio do esporte. Em julho de 2026, a Prefeitura anunciou parceria para ampliar a escolinha de futebol já desenvolvida na quadra do CRAS Jardim Acácia." data-source="https://www.feiradesantana.ba.gov.br/servico.asp?id=8&idn=43784&link=secom%2Fnoticias.asp&s=a&titulo=Parceria-entre-Prefeitura-de-Feira-e-entidades-fortalece-Projeto-One-Two.html">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">⚽</div>
+            <div class="activity-cover-label">Futebol</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-free">💛 Gratuita</span>
+              <span class="badge badge-age">👦 Crianças e adolescentes</span>
+            </div>
+            <h3>Projeto Social One Two</h3>
+            <div class="activity-category">Futebol</div>
+            <p class="activity-description">Projeto social de inclusão por meio do esporte. Em julho de 2026, a Prefeitura anunciou parceria para ampliar a escolinha de futebol já desenvolvida na quadra do CRAS Jardim Acácia.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>CRAS Jardim Acácia - Jardim Acácia, Feira de Santana - BA</span></div>
+              <div><b>☎</b><span>SECEL: (75) 3623-7634</span></div>
+              <div><b>✓</b><span>Gratuito • confirme inscrições, vagas e dias das atividades</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=CRAS%20Jardim%20Ac%C3%A1cia%20-%20Jardim%20Ac%C3%A1cia%2C%20Feira%20de%20Santana%20-%20BA">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card" data-name="Projeto Luta Cidadã" data-sport="jiujitsu" data-type="free" data-title="Projeto Luta Cidadã" data-category="Jiu-Jitsu" data-age="9 a 12 anos" data-address="Bairro Rua Nova - Feira de Santana - BA" data-phone="Contato via BCS Rua Nova / parceiros do projeto" data-phone-raw="" data-availability="Gratuito • público local; confirme vagas diretamente com o projeto" data-description="Projeto apoiado pela Base Comunitária de Segurança que oferece aulas semanais de jiu-jitsu para crianças e adolescentes do bairro Rua Nova, em parceria com escola municipal e CT Armageddon." data-source="https://www.bahianoticias.com.br/amp/noticia/320033-projeto-da-pm-oferece-aulas-de-jiu-jitsu-para-criancas-em-feira-de-santana">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">🤝</div>
+            <div class="activity-cover-label">Jiu-Jitsu</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-free">💛 Gratuita</span>
+              <span class="badge badge-age">👦 9 a 12 anos</span>
+            </div>
+            <h3>Projeto Luta Cidadã</h3>
+            <div class="activity-category">Jiu-Jitsu</div>
+            <p class="activity-description">Projeto apoiado pela Base Comunitária de Segurança que oferece aulas semanais de jiu-jitsu para crianças e adolescentes do bairro Rua Nova, em parceria com escola municipal e CT Armageddon.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>Bairro Rua Nova - Feira de Santana - BA</span></div>
+              <div><b>☎</b><span>Contato via BCS Rua Nova / parceiros do projeto</span></div>
+              <div><b>✓</b><span>Gratuito • público local; confirme vagas diretamente com o projeto</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bairro%20Rua%20Nova%20-%20Feira%20de%20Santana%20-%20BA">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+        <article class="activity-card" data-name="FSA Esporte Clube + Prefeitura" data-sport="multiesportes" data-type="free" data-title="FSA Esporte Clube + Prefeitura" data-category="Multiesportes" data-age="Crianças" data-address="Feira de Santana - BA" data-phone="SECEL: (75) 3623-7634" data-phone-raw="557536237634" data-availability="Gratuito • confirme calendário, polos e inscrições com a Prefeitura/FSA" data-description="Parceria anunciada pela Prefeitura para oferecer iniciação esportiva gratuita a crianças em basquete, vôlei, handebol, futsal e futebol." data-source="https://www.feiradesantana.ba.gov.br/secom/noticias.asp?idn=39984">
+          <div class="activity-cover">
+            <div class="activity-sport-icon">🏆</div>
+            <div class="activity-cover-label">Multiesportes</div>
+          </div>
+          <div class="activity-body">
+            <div class="badges">
+              <span class="badge badge-free">💛 Gratuita</span>
+              <span class="badge badge-age">👦 Crianças</span>
+            </div>
+            <h3>FSA Esporte Clube + Prefeitura</h3>
+            <div class="activity-category">Multiesportes</div>
+            <p class="activity-description">Parceria anunciada pela Prefeitura para oferecer iniciação esportiva gratuita a crianças em basquete, vôlei, handebol, futsal e futebol.</p>
+            <div class="activity-meta">
+              <div><b>📍</b><span>Feira de Santana - BA</span></div>
+              <div><b>☎</b><span>SECEL: (75) 3623-7634</span></div>
+              <div><b>✓</b><span>Gratuito • confirme calendário, polos e inscrições com a Prefeitura/FSA</span></div>
+            </div>
+            <div class="activity-actions">
+              <button class="activity-btn primary profile-open" type="button">Ver perfil</button>
+              <a class="activity-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Feira%20de%20Santana%20-%20BA">Abrir Maps</a>
+            </div>
+          </div>
+        </article>
+    
+      </div>
+
+      <div class="activity-empty" id="activityEmpty">
+        <strong>Nenhuma atividade encontrada.</strong><br>
+        Tente trocar os filtros ou pesquisar por outra modalidade ou bairro.
+      </div>
+
+      <div class="directory-cta">
+        <div>
+          <h3>Tem uma escola ou projeto esportivo em Feira?</h3>
+          <p>
+            Escolas, professores, academias e projetos sociais podem fazer parte do catálogo MoveKids
+            e facilitar o encontro com famílias da região.
+          </p>
+        </div>
+        <a href="#participar">Cadastrar atividade</a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="community" id="comunidade">
+    <div class="container">
+
+      <div class="community-header">
+        <div class="section-head" style="margin-bottom:0">
+          <span class="pill">MoveKids Comunidade</span>
+          <h2>Nem toda atividade precisa de mensalidade.</h2>
+          <p>
+            A comunidade MoveKids também pode organizar encontros gratuitos,
+            simples e voluntários. Um grupo de pais pode marcar um futebol,
+            uma corrida, um pedal ou uma tarde de brincadeiras e convidar outras famílias.
+          </p>
+        </div>
+
+        <div class="community-intro">
+          <h3>Feito por pessoas. Para pessoas.</h3>
+          <p>
+            Aqui não existe cobrança de mensalidade. Os encontros são organizados
+            voluntariamente pelos próprios participantes, com responsabilidade compartilhada
+            entre os adultos responsáveis pelas crianças.
+          </p>
+
+          <div class="community-stats">
+            <div class="community-stat">
+              <strong>R$ 0</strong>
+              <span>para participar</span>
+            </div>
+            <div class="community-stat">
+              <strong>Em grupo</strong>
+              <span>famílias conectadas</span>
+            </div>
+            <div class="community-stat">
+              <strong>Na cidade</strong>
+              <span>praças, parques e quadras</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="community-grid">
+        
+        <article class="community-card"
+                 data-community-title="Futebol de sábado"
+                 data-community-day="Sábados • 8h"
+                 data-community-local="Local definido pelo grupo"
+                 data-community-age="8 a 14 anos">
+          <div class="community-cover">
+            <div class="community-icon">⚽</div>
+            <div class="community-day">Sábados • 8h</div>
+          </div>
+          <div class="community-body">
+            <div class="community-tags"><span class="community-tag">Gratuito</span><span class="community-tag blue">Grupo aberto</span></div>
+            <h3>Futebol de sábado</h3>
+            <p>Partida recreativa organizada por pais, responsáveis e voluntários para crianças e adolescentes.</p>
+            <div class="community-info">
+              <div><b>📍</b><span>Local definido pelo grupo</span></div>
+              <div><b>👦</b><span>8 a 14 anos</span></div>
+              <div><b>🎯</b><span>Iniciante e intermediário</span></div>
+            </div>
+            <div class="community-actions">
+              <button class="community-action primary community-join" type="button">Quero participar</button>
+              <button class="community-action community-share" type="button">Compartilhar</button>
+            </div>
+          </div>
+        </article>
+    
+        <article class="community-card"
+                 data-community-title="Corrida MoveKids"
+                 data-community-day="Domingos • 7h"
+                 data-community-local="Ponto de encontro definido pelo grupo"
+                 data-community-age="8 a 14 anos + responsáveis">
+          <div class="community-cover">
+            <div class="community-icon">🏃</div>
+            <div class="community-day">Domingos • 7h</div>
+          </div>
+          <div class="community-body">
+            <div class="community-tags"><span class="community-tag">Gratuito</span><span class="community-tag blue">Família</span></div>
+            <h3>Corrida MoveKids</h3>
+            <p>Corrida e caminhada leve em grupo para crianças acompanhadas dos responsáveis, com foco em movimento e convivência.</p>
+            <div class="community-info">
+              <div><b>📍</b><span>Ponto de encontro definido pelo grupo</span></div>
+              <div><b>👦</b><span>8 a 14 anos + responsáveis</span></div>
+              <div><b>🎯</b><span>Todos os níveis</span></div>
+            </div>
+            <div class="community-actions">
+              <button class="community-action primary community-join" type="button">Quero participar</button>
+              <button class="community-action community-share" type="button">Compartilhar</button>
+            </div>
+          </div>
+        </article>
+    
+        <article class="community-card"
+                 data-community-title="Pedal em família"
+                 data-community-day="Domingos • 8h"
+                 data-community-local="Rota combinada previamente"
+                 data-community-age="Crianças acompanhadas">
+          <div class="community-cover">
+            <div class="community-icon">🚲</div>
+            <div class="community-day">Domingos • 8h</div>
+          </div>
+          <div class="community-body">
+            <div class="community-tags"><span class="community-tag">Gratuito</span><span class="community-tag blue">Família</span></div>
+            <h3>Pedal em família</h3>
+            <p>Passeio ciclístico recreativo em grupo, com ritmo leve e acompanhamento dos responsáveis.</p>
+            <div class="community-info">
+              <div><b>📍</b><span>Rota combinada previamente</span></div>
+              <div><b>👦</b><span>Crianças acompanhadas</span></div>
+              <div><b>🎯</b><span>Leve</span></div>
+            </div>
+            <div class="community-actions">
+              <button class="community-action primary community-join" type="button">Quero participar</button>
+              <button class="community-action community-share" type="button">Compartilhar</button>
+            </div>
+          </div>
+        </article>
+    
+        <article class="community-card"
+                 data-community-title="Vôlei na praça"
+                 data-community-day="Sábados • 16h"
+                 data-community-local="Quadra pública definida pelo grupo"
+                 data-community-age="10 a 14 anos">
+          <div class="community-cover">
+            <div class="community-icon">🏐</div>
+            <div class="community-day">Sábados • 16h</div>
+          </div>
+          <div class="community-body">
+            <div class="community-tags"><span class="community-tag">Gratuito</span><span class="community-tag blue">Grupo aberto</span></div>
+            <h3>Vôlei na praça</h3>
+            <p>Encontro comunitário para brincar, aprender fundamentos e formar times de maneira descontraída.</p>
+            <div class="community-info">
+              <div><b>📍</b><span>Quadra pública definida pelo grupo</span></div>
+              <div><b>👦</b><span>10 a 14 anos</span></div>
+              <div><b>🎯</b><span>Todos os níveis</span></div>
+            </div>
+            <div class="community-actions">
+              <button class="community-action primary community-join" type="button">Quero participar</button>
+              <button class="community-action community-share" type="button">Compartilhar</button>
+            </div>
+          </div>
+        </article>
+    
+        <article class="community-card"
+                 data-community-title="Movimento no parque"
+                 data-community-day="Sábados • 9h"
+                 data-community-local="Área pública definida pelo grupo"
+                 data-community-age="8 a 14 anos">
+          <div class="community-cover">
+            <div class="community-icon">🤸</div>
+            <div class="community-day">Sábados • 9h</div>
+          </div>
+          <div class="community-body">
+            <div class="community-tags"><span class="community-tag">Gratuito</span><span class="community-tag blue">Pais + filhos</span></div>
+            <h3>Movimento no parque</h3>
+            <p>Circuito simples com brincadeiras, alongamento, coordenação, corrida curta e atividades em dupla.</p>
+            <div class="community-info">
+              <div><b>📍</b><span>Área pública definida pelo grupo</span></div>
+              <div><b>👦</b><span>8 a 14 anos</span></div>
+              <div><b>🎯</b><span>Todos os níveis</span></div>
+            </div>
+            <div class="community-actions">
+              <button class="community-action primary community-join" type="button">Quero participar</button>
+              <button class="community-action community-share" type="button">Compartilhar</button>
+            </div>
+          </div>
+        </article>
+    
+        <article class="community-card"
+                 data-community-title="Brincadeiras e jogos livres"
+                 data-community-day="Domingos • 16h"
+                 data-community-local="Praça ou parque definido pelo grupo"
+                 data-community-age="8 a 14 anos">
+          <div class="community-cover">
+            <div class="community-icon">🥏</div>
+            <div class="community-day">Domingos • 16h</div>
+          </div>
+          <div class="community-body">
+            <div class="community-tags"><span class="community-tag">Gratuito</span><span class="community-tag blue">Convivência</span></div>
+            <h3>Brincadeiras e jogos livres</h3>
+            <p>Encontro com queimada, pega-pega, frisbee, circuito e outras brincadeiras escolhidas pelas próprias crianças.</p>
+            <div class="community-info">
+              <div><b>📍</b><span>Praça ou parque definido pelo grupo</span></div>
+              <div><b>👦</b><span>8 a 14 anos</span></div>
+              <div><b>🎯</b><span>Livre</span></div>
+            </div>
+            <div class="community-actions">
+              <button class="community-action primary community-join" type="button">Quero participar</button>
+              <button class="community-action community-share" type="button">Compartilhar</button>
+            </div>
+          </div>
+        </article>
+    
+      </div>
+
+      <div class="community-create">
+        <div>
+          <h3>Quer puxar uma atividade no seu bairro?</h3>
+          <p>
+            Crie um grupo, escolha a atividade, informe o dia e o ponto de encontro.
+            O MoveKids pode servir como espaço para aproximar outras famílias interessadas.
+          </p>
+        </div>
+        <button class="btn-primary" id="communityCreateBtn" type="button">+ Criar atividade voluntária</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="event" id="evento">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill">Informações do projeto</span>
+        <h2>MoveKids 2026</h2>
+        <p>Uma ação pensada para transformar informação em experiência e experiência em novos hábitos.</p>
+      </div>
+
+      <div class="event-grid">
+        <div class="event-card">
+          <small>Período</small>
+          <strong>Novembro de 2026</strong>
+        </div>
+        <div class="event-card">
+          <small>Projeto</small>
+          <strong>MoveKids</strong>
+        </div>
+        <div class="event-card">
+          <small>Natureza</small>
+          <strong>Ação extensionista</strong>
+        </div>
+        <div class="event-card">
+          <small>Local</small>
+          <strong>A definir</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <span class="pill">Como funciona</span>
+        <h2>Da descoberta ao movimento.</h2>
+        <p>Uma jornada simples para transformar curiosidade em participação e conexão.</p>
+      </div>
+
+      <div class="journey-grid">
+        <article class="step">
+          <div class="step-number">01</div>
+          <h3>Conhecer</h3>
+          <p>Famílias descobrem diferentes modalidades e profissionais do esporte infantil.</p>
+        </article>
+
+        <article class="step">
+          <div class="step-number">02</div>
+          <h3>Experimentar</h3>
+          <p>As crianças têm contato com atividades que valorizam movimento e diversão.</p>
+        </article>
+
+        <article class="step">
+          <div class="step-number">03</div>
+          <h3>Conectar</h3>
+          <p>Mães e empreendedores conversam sobre horários, propostas e possibilidades.</p>
+        </article>
+
+        <article class="step">
+          <div class="step-number">04</div>
+          <h3>Continuar</h3>
+          <p>O objetivo é incentivar a permanência da criança em uma rotina esportiva.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="participar">
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h2>Vamos colocar a infância em movimento?</h2>
+          <p>
+            Seja você mãe, responsável ou profissional do esporte, o MoveKids foi criado
+            para aproximar pessoas que acreditam em uma infância mais ativa e com mais experiências reais.
+          </p>
+        </div>
+
+        <div>
+          <a class="btn-secondary" href="mailto:contato@movekids.com.br">
+            Quero saber mais
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<div class="profile-modal" id="profileModal" aria-hidden="true">
+  <div class="profile-panel" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+    <div class="profile-head" id="profileHead">
+      <div>
+        <small id="profileType">Atividade</small>
+        <h3 id="profileTitle">Perfil da atividade</h3>
+      </div>
+      <button class="profile-close" id="profileClose" type="button" aria-label="Fechar">✕</button>
+    </div>
+
+    <div class="profile-content">
+      <div class="profile-info">
+        <div class="badges">
+          <span class="badge badge-paid" id="profilePayment">Particular</span>
+          <span class="badge badge-age" id="profileAge">Faixa etária</span>
+        </div>
+
+        <p class="activity-description" id="profileDescription"></p>
+
+        <div class="profile-info-grid">
+          <div class="profile-info-item">
+            <small>Modalidade</small>
+            <strong id="profileCategory"></strong>
+          </div>
+          <div class="profile-info-item">
+            <small>Endereço</small>
+            <strong id="profileAddress"></strong>
+          </div>
+          <div class="profile-info-item">
+            <small>Contato</small>
+            <strong id="profilePhone"></strong>
+          </div>
+          <div class="profile-info-item">
+            <small>Disponibilidade</small>
+            <strong id="profileAvailability"></strong>
+          </div>
+        </div>
+
+        <div class="profile-links">
+          <a id="profileMaps" href="#" target="_blank" rel="noopener">📍 Abrir no Google Maps</a>
+          <a id="profileWhatsapp" href="#" target="_blank" rel="noopener" class="secondary">WhatsApp</a>
+          <a id="profileSource" href="#" target="_blank" rel="noopener" class="secondary">Fonte / site</a>
+        </div>
+
+        <div class="profile-disclaimer">
+          O MoveKids funciona como vitrine informativa. A instituição é responsável por
+          confirmar vagas, preços, horários, critérios de participação e demais condições.
+        </div>
+      </div>
+
+      <div class="profile-map">
+        <iframe id="profileMapFrame" title="Localização da atividade no mapa"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="container footer-row">
+    <div><strong>MoveKids</strong> — Movimento que transforma.</div>
+    <div>Projeto extensionista • Novembro de 2026</div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  const cards = [...document.querySelectorAll('.activity-card')];
+  const search = document.getElementById('activitySearch');
+  const sport = document.getElementById('sportFilter');
+  const type = document.getElementById('typeFilter');
+  const count = document.getElementById('activityCount');
+  const empty = document.getElementById('activityEmpty');
+
+  function normalize(v){
+    return (v || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g,'')
+      .toLowerCase();
+  }
+
+  function filterActivities(){
+    const query = normalize(search.value);
+    const sportValue = sport.value;
+    const typeValue = type.value;
+    let visible = 0;
+
+    cards.forEach(card => {
+      const text = normalize(
+        card.dataset.name + ' ' +
+        card.dataset.category + ' ' +
+        card.dataset.description + ' ' +
+        card.dataset.address
+      );
+
+      const matchesSearch = !query || text.includes(query);
+      const matchesSport = sportValue === 'all' || card.dataset.sport === sportValue;
+      const matchesType = typeValue === 'all' || card.dataset.type === typeValue;
+      const show = matchesSearch && matchesSport && matchesType;
+
+      card.style.display = show ? '' : 'none';
+      if(show) visible++;
+    });
+
+    count.textContent = visible + (visible === 1 ? ' atividade encontrada' : ' atividades encontradas') + ' em Feira de Santana';
+    empty.style.display = visible ? 'none' : 'block';
+  }
+
+  search.addEventListener('input', filterActivities);
+  sport.addEventListener('change', filterActivities);
+  type.addEventListener('change', filterActivities);
+
+  const modal = document.getElementById('profileModal');
+  const head = document.getElementById('profileHead');
+  const closeBtn = document.getElementById('profileClose');
+
+  function setText(id, value){
+    document.getElementById(id).textContent = value || 'Consultar';
+  }
+
+  function openProfile(card){
+    const isFree = card.dataset.type === 'free';
+    head.classList.toggle('free', isFree);
+
+    setText('profileType', isFree ? 'Projeto / atividade gratuita' : 'Atividade particular');
+    setText('profileTitle', card.dataset.title);
+    setText('profileAge', '👦 ' + card.dataset.age);
+    setText('profileDescription', card.dataset.description);
+    setText('profileCategory', card.dataset.category);
+    setText('profileAddress', card.dataset.address);
+    setText('profilePhone', card.dataset.phone);
+    setText('profileAvailability', card.dataset.availability);
+
+    const payment = document.getElementById('profilePayment');
+    payment.textContent = isFree ? '💛 Gratuita' : '● Particular';
+    payment.className = 'badge ' + (isFree ? 'badge-free' : 'badge-paid');
+
+    const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(card.dataset.address);
+    document.getElementById('profileMaps').href = mapsUrl;
+    document.getElementById('profileMapFrame').src =
+      'https://www.google.com/maps?q=' + encodeURIComponent(card.dataset.address) + '&output=embed';
+
+    const wa = document.getElementById('profileWhatsapp');
+    if(card.dataset.phoneRaw){
+      wa.style.display = '';
+      wa.href = 'https://wa.me/' + card.dataset.phoneRaw;
+    } else {
+      wa.style.display = 'none';
+      wa.href = '#';
+    }
+
+    const source = document.getElementById('profileSource');
+    if(card.dataset.source){
+      source.style.display = '';
+      source.href = card.dataset.source;
+    } else {
+      source.style.display = 'none';
+      source.href = '#';
+    }
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProfile(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    document.getElementById('profileMapFrame').src = '';
+  }
+
+  document.querySelectorAll('.profile-open').forEach(btn => {
+    btn.addEventListener('click', () => openProfile(btn.closest('.activity-card')));
+  });
+
+  closeBtn.addEventListener('click', closeProfile);
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal) closeProfile();
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && modal.classList.contains('open')) closeProfile();
+  });
+})();
+</script>
+
+
+<div class="community-modal" id="communityModal" aria-hidden="true">
+  <div class="community-modal-card">
+    <div class="community-modal-head">
+      <div>
+        <h3 id="communityModalTitle">Participar da atividade</h3>
+        <p id="communityModalSubtitle">Preencha seus dados para demonstrar interesse.</p>
+      </div>
+      <button class="profile-close" id="communityModalClose" type="button" aria-label="Fechar">✕</button>
+    </div>
+
+    <form class="community-form" id="communityForm">
+      <input type="hidden" id="communityActionType" value="join">
+
+      <div class="community-field">
+        <label for="communityName">Nome do responsável</label>
+        <input id="communityName" type="text" placeholder="Seu nome" required>
+      </div>
+
+      <div class="community-field">
+        <label for="communityPhone">WhatsApp</label>
+        <input id="communityPhone" type="tel" placeholder="(75) 99999-9999" required>
+      </div>
+
+      <div class="community-field" id="communityActivityField">
+        <label for="communityActivity">Atividade</label>
+        <input id="communityActivity" type="text" readonly>
+      </div>
+
+      <div class="community-field community-create-only" style="display:none">
+        <label for="communitySport">Qual atividade você quer organizar?</label>
+        <select id="communitySport">
+          <option>Futebol</option>
+          <option>Corrida / caminhada</option>
+          <option>Pedal</option>
+          <option>Vôlei</option>
+          <option>Brincadeiras e jogos</option>
+          <option>Treino funcional</option>
+          <option>Outra</option>
+        </select>
+      </div>
+
+      <div class="community-field community-create-only" style="display:none">
+        <label for="communityPlace">Bairro / ponto de encontro</label>
+        <input id="communityPlace" type="text" placeholder="Ex.: Campo Limpo, SIM, Tomba...">
+      </div>
+
+      <div class="community-field community-create-only" style="display:none">
+        <label for="communityWhen">Dia e horário sugeridos</label>
+        <input id="communityWhen" type="text" placeholder="Ex.: sábado às 8h">
+      </div>
+
+      <div class="community-field">
+        <label for="communityMessage">Observação</label>
+        <textarea id="communityMessage" placeholder="Conte algo que seja importante para o grupo..."></textarea>
+      </div>
+
+      <div class="community-form-note">
+        Esta versão do site é demonstrativa. O formulário organiza a intenção de participação,
+        mas o envio definitivo depende da integração futura com banco de dados, WhatsApp ou e-mail.
+      </div>
+
+      <div class="community-form-actions">
+        <button class="activity-btn" id="communityCancel" type="button">Cancelar</button>
+        <button class="activity-btn primary" type="submit">Registrar interesse</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  const modal = document.getElementById('communityModal');
+  if(!modal) return;
+
+  const closeBtn = document.getElementById('communityModalClose');
+  const cancelBtn = document.getElementById('communityCancel');
+  const title = document.getElementById('communityModalTitle');
+  const subtitle = document.getElementById('communityModalSubtitle');
+  const activity = document.getElementById('communityActivity');
+  const actionType = document.getElementById('communityActionType');
+  const createOnly = [...document.querySelectorAll('.community-create-only')];
+  const activityField = document.getElementById('communityActivityField');
+  const form = document.getElementById('communityForm');
+
+  function openJoin(card){
+    actionType.value = 'join';
+    title.textContent = 'Participar de ' + card.dataset.communityTitle;
+    subtitle.textContent = card.dataset.communityDay + ' • ' + card.dataset.communityAge;
+    activity.value = card.dataset.communityTitle;
+    activityField.style.display = '';
+    createOnly.forEach(el => el.style.display = 'none');
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openCreate(){
+    actionType.value = 'create';
+    title.textContent = 'Criar atividade voluntária';
+    subtitle.textContent = 'Organize um encontro esportivo gratuito na sua região.';
+    activity.value = '';
+    activityField.style.display = 'none';
+    createOnly.forEach(el => el.style.display = '');
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.community-join').forEach(btn => {
+    btn.addEventListener('click', () => openJoin(btn.closest('.community-card')));
+  });
+
+  document.querySelectorAll('.community-share').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const card = btn.closest('.community-card');
+      const text = 'MoveKids Comunidade — ' + card.dataset.communityTitle +
+        ' | ' + card.dataset.communityDay +
+        ' | ' + card.dataset.communityLocal;
+
+      if(navigator.share){
+        try{
+          await navigator.share({title:'MoveKids Comunidade', text:text});
+        }catch(e){}
+      }else{
+        try{
+          await navigator.clipboard.writeText(text);
+          const original = btn.textContent;
+          btn.textContent = 'Copiado ✓';
+          setTimeout(() => btn.textContent = original, 1500);
+        }catch(e){
+          alert(text);
+        }
+      }
+    });
+  });
+
+  const createBtn = document.getElementById('communityCreateBtn');
+  if(createBtn) createBtn.addEventListener('click', openCreate);
+
+  closeBtn.addEventListener('click', close);
+  cancelBtn.addEventListener('click', close);
+
+  modal.addEventListener('click', e => {
+    if(e.target === modal) close();
+  });
+
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && modal.classList.contains('open')) close();
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    if(actionType.value === 'create'){
+      alert('Atividade registrada como demonstração. Em uma versão publicada, isso pode ser enviado para aprovação da equipe MoveKids.');
+    }else{
+      alert('Interesse registrado como demonstração. Em uma versão publicada, o contato poderá ser encaminhado ao organizador do grupo.');
+    }
+
+    form.reset();
+    close();
+  });
+})();
+</script>
+
+<script>
+(function(){
+  const btn = document.getElementById('mobileMenuBtn');
+  const nav = document.getElementById('mainNav');
+  if(!btn || !nav) return;
+
+  function closeMenu(){
+    nav.classList.remove('open');
+    btn.classList.remove('active');
+    btn.setAttribute('aria-expanded','false');
+    btn.setAttribute('aria-label','Abrir menu');
+  }
+
+  function openMenu(){
+    nav.classList.add('open');
+    btn.classList.add('active');
+    btn.setAttribute('aria-expanded','true');
+    btn.setAttribute('aria-label','Fechar menu');
+  }
+
+  btn.addEventListener('click', function(){
+    nav.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', function(e){
+    if(window.innerWidth > 920) return;
+    if(nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)){
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMenu();
+  });
+
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 920) closeMenu();
+  });
+})();
+</script>
+
+</body>
+</html>
